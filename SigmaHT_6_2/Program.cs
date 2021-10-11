@@ -8,7 +8,15 @@ namespace SigmaHT_6_2
         {
             VisitAccounting vistiAccounting = new VisitAccounting();
 
-            vistiAccounting.GetDataFromFile();
+            try
+            {
+                vistiAccounting.GetDataFromFile();
+            }
+            catch (ArgumentException exception)
+            {
+                Console.WriteLine(exception.Message);
+                return;
+            }
 
             Console.WriteLine("Number of visits for every IP:\n");
 

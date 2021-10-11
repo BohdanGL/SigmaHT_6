@@ -23,8 +23,15 @@ namespace SigmaHT_6_2
             for (int i = 0; i < visits.Length; i++)
             {
                 Visit visit = new Visit();
-
-                visit.Parse(visits[i]);
+                
+                try
+                {
+                    visit.Parse(visits[i]);
+                }
+                catch (ArgumentException)
+                {
+                    throw;
+                }
 
                 this.visits[i] = visit;
             }

@@ -33,20 +33,24 @@ namespace SigmaHT_6_2
             string[] timeValues = values[1].Split(':');
            
             int hours;
-            int.TryParse(timeValues[0], out hours);
+            if(!int.TryParse(timeValues[0], out hours))
+                throw new ArgumentException("Bad input in hours");
 
             int minutes;
-            int.TryParse(timeValues[1], out minutes);
+            if(!int.TryParse(timeValues[1], out minutes))
+                throw new ArgumentException("Bad input in minutes");
 
             int seconds;
-            int.TryParse(timeValues[2], out seconds);
+            if(!int.TryParse(timeValues[2], out seconds))
+                throw new ArgumentException("Bad input in seconds");
 
             TimeSpan time = new TimeSpan(hours, minutes, seconds);
 
             Time = time;
 
             DayOfWeek dayOfWeek;
-            DayOfWeek.TryParse(values[2], out dayOfWeek);
+            if(!DayOfWeek.TryParse(values[2], out dayOfWeek))
+                throw new ArgumentException("Bad input in day");
 
             DayOfWeek = dayOfWeek;
         }
